@@ -1,7 +1,16 @@
+import Header from "./components/Header";
+import Body from "./components/Body";
+import Footer from "./components/Footer";
 import "./App.css";
 
-function App() {
-  return <h1 className="App">Sudoku</h1>;
-}
+const App = () => {
+  return (
+    <div className="appLayout">
+      <Header />
+      <Body />
+      <Footer />
+    </div>
+  );
+};
 
 export default App;
