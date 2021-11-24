@@ -1,3 +1,14 @@
 .body {
   flex: 1 1 auto;
 }
+
+.gridContainer {
+  display: flex;
+  flex-direction: row;
+
+  flex-wrap: wrap;
+  max-width: calc(2rem * 9);
+
+  margin: 20px auto;
+  outline: 2px solid rgb(54, 54, 54);
+}
