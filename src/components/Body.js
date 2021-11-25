@@ -1,11 +1,18 @@
 import React, { useState } from "react";
 import Cell from "./Cell";
+import { checkSudokuSolution } from "../utility/SudokuSolutionChecker";
 import "./Body.css";
 
 const Body = () => {
   const [grid, setGrid] = useState(
     Array.from(Array(9), () => new Array(9).fill(0))
   );
+
+  const [isSudokuCorrect, setIsSudokuCorrect] = useState(null);
+
+  const handleCheckSudokuSolution = () => {
+    setIsSudokuCorrect(checkSudokuSolution(grid));
+  };
 
   const handleSetGrid = (index, value) => {
     let updatedGrid = grid;
@@ -35,6 +42,20 @@ const Body = () => {
               />
             ))}
         </div>
+        <div className="status">
+          <div>
+            <div>
+              {isSudokuCorrect === null
+                ? ""
+                : isSudokuCorrect
+                ? "Correct"
+                : "Incorrect"}
+            </div>
+            <button onClick={handleCheckSudokuSolution}>
+              {"Check Sudoku Solution"}
+            </button>
+          </div>
+        </div>
       </div>
     </>
   );
@@ -42,18 +63,18 @@ const Body = () => {
 
 const getSampleSudoku = () => {
   return [
-    [4, 0, 5, 7, 0, 0, 0, 0, 6],
-    [0, 0, 0, 0, 0, 2, 0, 9, 0],
-    [8, 9, 0, 0, 0, 0, 0, 3, 7],
-    [1, 2, 4, 8, 9, 0, 6, 7, 0],
-    [9, 6, 0, 2, 7, 4, 5, 1, 0],
-    [0, 0, 0, 0, 0, 3, 8, 4, 0],
-    [3, 0, 9, 0, 2, 6, 0, 0, 0],
-    [0, 5, 0, 0, 0, 0, 0, 0, 4],
-    [0, 0, 0, 9, 5, 0, 0, 6, 0],
+    [0, 0, 0, 4, 9, 0, 2, 0, 0],
+    [0, 0, 6, 0, 1, 0, 0, 4, 7],
+    [0, 0, 4, 0, 5, 0, 0, 9, 0],
+
+    [6, 7, 0, 5, 0, 1, 4, 0, 0],
+    [8, 0, 0, 0, 4, 0, 7, 0, 0],
+    [5, 4, 9, 8, 0, 0, 3, 0, 6],
+
+    [4, 1, 0, 9, 6, 0, 8, 0, 0],
+    [0, 0, 0, 1, 0, 5, 9, 0, 4],
+    [0, 2, 8, 0, 7, 0, 0, 6, 5],
   ];
 };
-
-// const getSum = (arr) => arr.reduce((a, b) => a + b, 0);
 
 export default Body;

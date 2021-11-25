@@ -12,3 +12,7 @@
   margin: 20px auto;
   outline: 2px solid rgb(54, 54, 54);
 }
+
+.status {
+  text-align: center;
+}
